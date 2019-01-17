@@ -53,28 +53,32 @@ class App extends Component {
         // }
       ]
     };
-
+    
+    //Bind this for the multiple methods
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
   }
-  
+  //Method that adds a track from the Search Result to the Playlist when user clicks on + 
   addTrack(track) {
-    if(this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)) {
-      return;
+    if(this.state.playlistTracks.find(currentTrack => currentTrack.id === track.id)) {
+      return; // if track.id already exist in playlistTracks, then do nothing.
     } else {
-      let currentPlaylist = this.state.playlistTracks.slice();
-      currentPlaylist.push(track);
-      this.setState({playlistTracks: currentPlaylist});
+      let tempPlaylist = this.state.playlistTracks.slice(); //create a new variable that store a copy of the playlistTracks current array
+      tempPlaylist.push(track); //push the track to the variable
+      this.setState({playlistTracks: tempPlaylist}); //update the state with the new content from the variable
+      // this.setState({playlistTracks: this.state.playlistTracks.push(track)})
     }
   }
 
+  //Method that removes a track from the Playlist when a user clicks on -
   removeTrack(track) {
-    let currentPlaylist = this.state.playlistTracks.filter(savedTrack => savedTrack.id !== track.id);
-    this.setState({playListTracks: currentPlaylist});
+    let currentPlaylist = this.state.playlistTracks.filter(trackToRemove => trackToRemove.id !== track.id); //filter out the element if its id matches the track.id in the playlistTrakcs
+    this.setState({playlistTracks: currentPlaylist}); //update the state with the new array that has the track removed from it
   }
 
   updatePlaylistName(name){
+    console.log('name before change', this.state.playlistName);
     this.setState({playlistName: name}); 
   }
 

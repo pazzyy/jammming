@@ -9,13 +9,14 @@ class Playlist extends React.Component {
         this.handleNameChange = this.handleNameChange.bind(this);
     }
     handleNameChange(e){
+        console.log('handlenamechange fired', e.target.value);
         this.props.onNameChange(e.target.value);
     }
 
     render () {
         return (
             <div className="Playlist">
-                <input defaultvalue={'New Playlist'} onChange={this.handleNameChange} />
+                <input defaultValue={'New Playlist'} onChange={this.handleNameChange} />
                 <TrackList tracks={this.props.playlistTracks} onRemove={this.props.onRemove} isRemoval={true}/>
                 <a className="Playlist-save">SAVE TO SPOTIFY</a>
             </div>
