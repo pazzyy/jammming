@@ -6,7 +6,9 @@ const Spotify = {
     getAccessToken() {
         if(accessToken){
             return accessToken;
-        } else if(window.location.href.match(/access_token=([^&]*)/) && window.location.href.match(/expires_in=([^&]*)/))
+        }
+        
+        if(window.location.href.match(/access_token=([^&]*)/) && window.location.href.match(/expires_in=([^&]*)/))
         {
           accessToken = window.location.href.match(/access_token=([^&]*)/)[1];
           let   expiresIn = window.location.href.match(/expires_in=([^&]*)/)[1];
@@ -37,8 +39,8 @@ const Spotify = {
                   return jsonResponse.tracks.items.map(track =>({
                       id: track.id,
                       name: track.name,
-                      artist: track.artist,
-                      album: track.album,
+                      artist: track.artists[0].name,
+                      album: track.album.name,
                       uri: track.uri
                   }));
               }
