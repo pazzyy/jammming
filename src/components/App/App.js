@@ -10,27 +10,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      searchResults: 
-      [
-        {
-          name: "Track 1",
-          artist: "Artist 1",
-          album: "Album 1",
-          id: "1",
-        },
-        {
-          name: "Track 2",
-          artist: "Artist 3",
-          album: "Album 1",
-          id: "2",
-        },
-        {
-          name: "Track 3",
-          artist: "Artist 1",
-          album: "Album 1",
-          id: "3",
-        }
-      ],
+      searchResults: [],
       playlistName: 'Paz Playlist',
       playlistTracks: []
     };
