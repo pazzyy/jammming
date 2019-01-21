@@ -2,67 +2,63 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
+## Synopsis
 
-### `npm start`
+This is the source code for the Jammming React project from CodecAdemy. This code will let a user authenticate to Spotify, run a search for artist, album or songs and get search results. <br>
+The user can then add tracks to a playlist and remove them as well. <br>
+The user can rename the playlist and save the playlist to the Spotify account used during the authentication process at the start.<br>
 
-Runs the app in the development mode.<br>
+There are some known issues that will be fixed later on such as persisting the search term after authentication reload/first search, using the enter key to trigger the search and adding feedback messages to confirm to the user that the playlist name has been changed and the playlist has been saved to his account. 
+
+## Code Example
+
+Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+
+## Motivation
+
+This project is part of a training program to learn React and get familiar with APIs.
+
+
+## Installation
+
+Runs **npm start** in the root directory to launch the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
+Run **npm run build** to build the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## API Reference
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The project uses the Spotify API for the search and playlist save methods. https://developer.spotify.com/documentation/web-api/reference/ <br>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+More specifically: 
+Search API: https://developer.spotify.com/documentation/web-api/reference/search/search/<br> with https://api.spotify.com/v1/search 
+User Profile: https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/ with https://api.spotify.com/v1/me <br>
+Playlist: https://developer.spotify.com/documentation/web-api/reference/playlists/ with https://api.spotify.com/v1/playlists/{playlist_id}/tracks and https://api.spotify.com/v1/users/{user_id}/playlists<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Tests
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Run **npm start** in the root directory. <br>
+Type in a search term and click on "Search<br>
+Accept permissions (or login and accept persmissions)<br>
+Enter the search term again and click on "Search" <br>
+Add any track to your playlist. You can remove any track you want as well <br>
+Rename your playlist by replacing "New Playlist" <br>
+Click "Save to Spotify" button <br>
+Go to the Spotify account used for authentication and find your playlist. Enjoy! <br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributors
 
-### Code Splitting
+You can contact me on Twitter [https://twitter.com/pezetp] and LinkedIn [https://www.linkedin.com/in/pascalpezet/] if you have any question.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## License
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This code is free to re-use as training material but no commercial application is permitted without prior consent. 

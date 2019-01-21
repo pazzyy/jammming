@@ -1,7 +1,7 @@
 let accessToken;
 const clientID = 'b0d22c256bd1477ab4f0e0ade6928d26';
 // const redirectURI = 'http://localhost:3000/'
-const redirectURI = "http://paz-test.surge.sh";
+const redirectURI = "http://paz-jammming.surge.sh";
 
 const Spotify = {
     //function to get the token. 
