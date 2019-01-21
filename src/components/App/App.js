@@ -50,9 +50,9 @@ class App extends Component {
   savePlaylist() {
     let trackURIs = [];
     for (let i = 0; i < this.state.playlistTracks.length; i++){
-      trackURIs.push(this.state.playlistTracks[i]);
+      trackURIs.push(this.state.playlistTracks[i].uri);
     }
-    Spotify.savePlaylist();
+    Spotify.savePlaylist(this.state.playlistName, trackURIs);
     this.setState({playlistName: 'New Playlist'});
     // console.log('I got triggered');
   }

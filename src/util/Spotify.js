@@ -65,6 +65,7 @@ const Spotify = {
         return fetch(userEndpoint, {
             headers: headers
         }).then(response => response.json()).then(jsonResponse =>{
+            console.log(jsonResponse.id);
             userId = jsonResponse.id;
         //POST request to create new playlist with playlist name and get a playlist ID
             return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
@@ -80,6 +81,8 @@ const Spotify = {
                 console.log(jsonResponse);
                 playlistId = jsonResponse.id
         //POST request to add the tracks to the playlist
+                console.log("trackUris", trackUris)
+               
                 return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
                     method: 'POST',
                     headers:{
@@ -90,9 +93,16 @@ const Spotify = {
                         uris: trackUris
                     })
                 }).then(response => response.json().then(jsonResponse => {
+                    console.log("wasnt an error", jsonResponse)
                     playlistId = jsonResponse.id;
-                }));
-            });
+                }))
+                
+                
+                
+
+                
+                .catch(err => { console.log('error is:' , err) });
+            })
         }, networkError => console.log(networkError.message));
     }
 };
