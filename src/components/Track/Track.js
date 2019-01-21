@@ -8,6 +8,7 @@ class Track extends React.Component {
         this.removeTrack = this.removeTrack.bind(this);
     }
 
+    //handle the + or - sign depending on if the value of isRemoval that is defined in SearchResult or Playlist
     renderAction(isRemoval) {
         if (isRemoval) {
             return <a className="Track-action" onClick={this.removeTrack}>-</a>;
@@ -16,10 +17,12 @@ class Track extends React.Component {
             return <a className="Track-action" onClick={this.addTrack}>+</a>;}
     }
 
+    //Triggers the addTrack from app that adds the track when the button is clicked
     addTrack() {
         this.props.onAdd(this.props.track);
     }
 
+    //Triggers the removeTrack from app that removes the track when the button is clicked
     removeTrack() {
         this.props.onRemove(this.props.track);
     }

@@ -48,15 +48,19 @@ class App extends Component {
 
   //Save the playlist when clicking on Save button
   savePlaylist() {
+    //creates an array of uris that will be sent to Spotify
     let trackURIs = [];
     for (let i = 0; i < this.state.playlistTracks.length; i++){
       trackURIs.push(this.state.playlistTracks[i].uri);
-    }
+    };
+
+    //calls the save method and passes the playlistname and the array of uri from above
     Spotify.savePlaylist(this.state.playlistName, trackURIs);
     this.setState({playlistName: 'New Playlist'});
     // console.log('I got triggered');
   }
 
+  //Search method that populate the searchResult array with the tracks returned
   search(term){
     console.log(`Searching with ${term}`);
     Spotify.search(term).then(track =>{
