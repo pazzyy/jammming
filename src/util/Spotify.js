@@ -46,6 +46,54 @@ const Spotify = {
                   }));
               }
           }, networkError => console.log(networkError.message));
+    },
+
+    savePlaylist(playlistName, trackUris){
+        accessToken = Spotify.getAccessToken();
+        let headers = {Authorization: `Bearer ${accessToken}`};
+        let userId;
+        let playlistId;
+        let userEndpoint = 'https://api.spotify.com/v1/me';
+        // let playlistEndpoint = `https://api.spotify.com/v1/users/${userId}/playlists`;
+        // let tracksEndpoint = `https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`;
+
+
+        if(!playlistName && trackUris === 0){
+            return;
+        }
+        //Generate user ID
+        return fetch(userEndpoint, {
+            headers: headers
+        }).then(response => response.json()).then(jsonResponse =>{
+            userId = jsonResponse.id;
+        //POST request to create new playlist with playlist name and get a playlist ID
+            return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+                method: 'POST',
+                headers:{
+                    Authorization: `Bearer ${accessToken}`,
+                    'Content-Type': 'application/jsonResponse'
+                },
+                body: JSON.stringify({
+                    name: playlistName
+                })
+            }).then(response => response.json()).then(jsonResponse => {
+                console.log(jsonResponse);
+                playlistId = jsonResponse.id
+        //POST request to add the tracks to the playlist
+                return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
+                    method: 'POST',
+                    headers:{
+                        Authorization: `Bearer ${accessToken}`,
+                        'Content-Type': 'application/jsonResponse'
+                    },
+                    body: JSON.stringify({
+                        uris: trackUris
+                    })
+                }).then(response => response.json().then(jsonResponse => {
+                    playlistId = jsonResponse.id;
+                }));
+            });
+        }, networkError => console.log(networkError.message));
     }
 };
 
