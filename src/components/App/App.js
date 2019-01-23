@@ -58,6 +58,9 @@ class App extends Component {
     Spotify.savePlaylist(this.state.playlistName, trackURIs);
     this.setState({playlistName: 'New Playlist'});
     // console.log('I got triggered');
+    
+    alert(`${this.state.playlistName} has been saved!`);
+
   }
 
   //Search method that populate the searchResult array with the tracks returned
