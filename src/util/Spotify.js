@@ -1,7 +1,7 @@
 let accessToken;
 const clientID = 'b0d22c256bd1477ab4f0e0ade6928d26';
-// const redirectURI = 'http://localhost:3000/'
-const redirectURI = "http://paz-jammming.surge.sh";
+const redirectURI = 'http://localhost:3000/'
+// const redirectURI = "http://paz-jammming.surge.sh";
 
 const Spotify = {
     //function to get the token. 
@@ -13,7 +13,7 @@ const Spotify = {
         if(window.location.href.match(/access_token=([^&]*)/) && window.location.href.match(/expires_in=([^&]*)/))
         {
           accessToken = window.location.href.match(/access_token=([^&]*)/)[1];
-          let   expiresIn = window.location.href.match(/expires_in=([^&]*)/)[1];
+          let expiresIn = window.location.href.match(/expires_in=([^&]*)/)[1];
       
           window.setTimeout(() => accessToken = '', expiresIn*1000);
           window.history.pushState('Access Token', null, '/');
