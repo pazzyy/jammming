@@ -1,0 +1,9 @@
+.Dialog{
+    display: flex;
+    width: 20rem;
+    height: 2rem;
+    background-color: aqua;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}

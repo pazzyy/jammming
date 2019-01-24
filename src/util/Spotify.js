@@ -98,7 +98,7 @@ const Spotify = {
                         uris: trackUris
                     })
                 }).then(response => response.json().then(jsonResponse => {
-                    console.log("Jsonresponse", jsonResponse)
+                    // console.log("Jsonresponse", response.json)
                     playlistId = jsonResponse.id; //Not sure why we have to save the playlistID again? It's in the instructions.
                 }));
             });

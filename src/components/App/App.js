@@ -5,6 +5,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import PlayList from '../Playlist/Playlist';
 import Spotify from '../../util/Spotify';
+// import Dialog from '../Dialog/Dialog';
 
 class App extends Component {
   constructor(props){
@@ -12,7 +13,8 @@ class App extends Component {
     this.state = {
       searchResults: [],
       playlistName: 'Paz Playlist',
-      playlistTracks: []
+      playlistTracks: [],
+      success: false
     };
     
     //Bind this for the multiple methods
@@ -46,6 +48,8 @@ class App extends Component {
     this.setState({playlistName: name}); 
   }
 
+  
+
   //Save the playlist when clicking on Save button
   savePlaylist() {
     //creates an array of uris that will be sent to Spotify
@@ -57,10 +61,9 @@ class App extends Component {
     //calls the save method and passes the playlistname and the array of uri from above
     Spotify.savePlaylist(this.state.playlistName, trackURIs);
     this.setState({playlistName: 'New Playlist'});
+    this.setState({success: true});
     // console.log('I got triggered');
-    
-    alert(`${this.state.playlistName} has been saved!`);
-
+    // alert(`${this.state.playlistName} has been saved!`);
   }
 
   //Search method that populate the searchResult array with the tracks returned
@@ -71,6 +74,11 @@ class App extends Component {
     });
   }
 
+  // showDialog(term) {
+  //   if(this.state.success){
+  //     return <Dialog onSuccess={term}/>;
+  //   }
+  // }
 
   render() {
     return (
@@ -78,6 +86,8 @@ class App extends Component {
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
         <div className="App">
           <SearchBar onSearch={this.search}/>
+          {/* {this.showDialog(this.state.playlistName)} */}
+
           <div className="App-playlist">
             <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack} />
             <PlayList playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks} onRemove={this.removeTrack} onNameChange={this.updatePlaylistName} onSave={this.savePlaylist}/>
